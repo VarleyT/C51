@@ -1,0 +1,65 @@
+C51 COMPILER V7.06   TEXT1                                                                 09/21/2022 18:58:26 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE TEXT1
+OBJECT MODULE PLACED IN Text1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Text1.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          #include "reg51.h"
+   2          
+   3          void delay(unsigned int x){
+   4   1              unsigned int j;
+   5   1              while((x--)!=0)
+   6   1                      for(j=0;j<125;j++);
+   7   1      }
+   8          
+   9          void main(){
+  10   1              int i;
+  11   1              P1=0xF8;
+  12   1              while(1){
+  13   2                      for(i=0;i<13;i++){
+  14   3                              if(P1!=0x1F && P1!=0x3E && P1!=0x7C){
+  15   4                                      P1=(P1<<1)+1;
+  16   4                                      delay(100);
+  17   4                              }else{
+  18   4                                      P1<<=1;
+  19   4                                      delay(100);
+  20   4                              }
+  21   3                      }
+  22   2                      for(i=0;i<2;i++){
+  23   3                              P1=0x7E;
+  24   3                              delay(100);
+  25   3                              P1=0xBD;
+  26   3                              delay(100);
+  27   3                              P1=0xDB;
+  28   3                              delay(100);
+  29   3                              P1=0xE7;
+  30   3                              delay(100);
+  31   3                              P1=0xDB;
+  32   3                              delay(100);
+  33   3                              P1=0xBD;
+  34   3                              delay(100);
+  35   3                              P1=0x7E;
+  36   3                              delay(100);
+  37   3                      }
+  38   2                      P1=0xF8;
+  39   2                      delay(100);
+  40   2              }
+  41   1              
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    146    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
